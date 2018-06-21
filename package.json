@@ -1,0 +1,21 @@
+{
+  "name": "hc-refreshstates",
+  "version": "1.0.0",
+  "description": "Sample TS code for handling Home Center long polling ",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently --kill-others \"tsc -w\" \"nodemon dist/server.js\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc"
+  },
+  "author": "Wojciech Ryś",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^2.9.2"
+  },
+  "devDependencies": {
+    "concurrently": "^2.2.0",
+    "typescript": "^2.9.2",
+    "nodemon": "^1.9.2"
+  }
+}
