@@ -1,18 +1,12 @@
-import axios, { AxiosRequestConfig, AxiosPromise } from 'axios';
+import axios from 'axios';
 
 export class HCRefreshStatesClient {
-    ip: string;
-    user: string;
-    password: string;
+    constructor(private ip: string, 
+        private user: string, 
+        private password: string) {}
 
-    constructor(ip: string, user: string, password: string) {
-        this.ip = ip;
-        this.user = user;
-        this.password = password;
-    }
-
-    getRefreshStates(last: number = 1, callback?: Function) {
-        let url: string = "http://" + this.ip + "/api/refreshStates?last=" + last;
+    getRefreshStates(last: number = 1, callback?: Function): void {
+        const url: string = "http://" + this.ip + "/api/refreshStates?last=" + last;
 
         axios.get(url, {
             withCredentials: true,
@@ -27,9 +21,7 @@ export class HCRefreshStatesClient {
             this.getRefreshStates(response.data.last, callback);
         })
         .catch(error => {
-            console.log("error")
+            console.log("error: ", error)
         });
     }
-
-
 }
